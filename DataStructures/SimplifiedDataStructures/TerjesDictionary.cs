@@ -1,14 +1,14 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 
-namespace DataStructures
+namespace DataStructures.SimplifiedDataStructures
 {
-    public class Terionary
+    public class TerjesDictionary
     {
-        private List<string>[] _values;
-        private List<string>[] _keys;
+        private readonly List<string>[] _values;
+        private readonly List<string>[] _keys;
 
-        public Terionary()
+        public TerjesDictionary()
         {
             _values = new List<string>[1000];
             _keys = new List<string>[1000];
@@ -30,20 +30,20 @@ namespace DataStructures
 
         private int GetHashCode(string key)
         {
-            var sum = key.ToCharArray().Select(c=>(int)c).Sum();
-            var hashCode = sum % 1000;
-            return hashCode;
+            return key.GetHashCode() % 1000;
         }
 
         public void Edit(string key, string value)
         {
-            var index = _keys.FindIndex(s => s == key);
+            var index = Array.IndexOf(_keys, key);
             if (index >= 0)
             {
-                _values[index] = value;
+                var list = _values[index];
+                list.Add(value);
             }
             else
             {
+                var list = new List<string>();
                 _keys.Add(key);
                 _values.Add(value);
             }
