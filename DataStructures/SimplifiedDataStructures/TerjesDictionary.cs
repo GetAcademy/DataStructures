@@ -21,16 +21,11 @@ namespace DataStructures.SimplifiedDataStructures
 
         public string GetValue(string key)
         {
-            var hashCode = GetHashCode(key);
+            var hashCode = key.GetHashCode() % 1000;
             var keyList = _keys[hashCode];
             var index = keyList.FindIndex(s => s == key);
             if (index == -1) return null;
             return _values[hashCode][index];
-        }
-
-        private int GetHashCode(string key)
-        {
-            return key.GetHashCode() % 1000;
         }
 
         public void Edit(string key, string value)
@@ -43,9 +38,8 @@ namespace DataStructures.SimplifiedDataStructures
             }
             else
             {
-                var list = new List<string>();
-                _keys.Add(key);
-                _values.Add(value);
+                _keys.Add(new List<string>() { key });
+                _values.Add(new List<string>() { value });
             }
         }
 
