@@ -1,7 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-
-namespace DataStructures.SimplifiedDataStructures
+﻿namespace DataStructures.SimplifiedDataStructures
 {
     public class TerjesDictionary
     {
@@ -23,34 +20,26 @@ namespace DataStructures.SimplifiedDataStructures
         {
             var hashCode = key.GetHashCode() % 1000;
             var keyList = _keys[hashCode];
-            var index = keyList.FindIndex(s => s == key);
-            if (index == -1) return null;
-            return _values[hashCode][index];
+            var indexInList = keyList.IndexOf(key);
+            if (indexInList == -1) return null;
+            return _values[hashCode][indexInList];
         }
 
-        public void Edit(string key, string value)
+        public void SetValue(string key, string value)
         {
-            var index = Array.IndexOf(_keys, key);
-            if (index >= 0)
+            var hashCode = key.GetHashCode() % 1000;
+            var keyList = _keys[hashCode];
+            var valueList = _values[hashCode];
+            var indexInList = keyList.IndexOf(key);
+            if (indexInList >= 0)
             {
-                var list = _values[index];
-                list.Add(value);
+                valueList[indexInList] = value;
             }
             else
             {
-                _keys.Add(new List<string>() { key });
-                _values.Add(new List<string>() { value });
+                keyList.Add(key);
+                valueList.Add(value);
             }
-        }
-
-        public bool ContainsKey(string key)
-        {
-            return _keys.Contains(key);
-        }
-
-        public IEnumerable<string> GetKeys()
-        {
-            return _keys;
         }
     }
 }
