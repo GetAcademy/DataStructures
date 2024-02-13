@@ -1,11 +1,11 @@
 ﻿namespace DataStructures.SimplifiedDataStructures
 {
-    class LinkedListNode
+    class TerjesLinkedListNode
     {
         public string Value { get; }
-        public LinkedListNode Next { get; set; }
+        public TerjesLinkedListNode Next { get; set; }
 
-        public LinkedListNode(string value)
+        public TerjesLinkedListNode(string value)
         {
             this.Value = value;
         }

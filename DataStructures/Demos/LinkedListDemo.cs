@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using DataStructures.SimplifiedDataStructures;
 
 namespace DataStructures.Demos
 {
@@ -10,17 +6,10 @@ namespace DataStructures.Demos
     {
         public static void Run()
         {
-            var linkedList = new LinkedList();
+            var linkedList = new TerjesLinkedList();
             linkedList.Add("A");
             linkedList.Add("B");
             linkedList.Add("C");
-
-            //foreach (var element in linkedList.GetAll())
-            //{
-
-            //}
-            var list = new LinkedList<string>();
-            //LinkedList<string>
         }
     }
 }
