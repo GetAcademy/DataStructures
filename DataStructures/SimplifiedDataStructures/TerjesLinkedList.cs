@@ -19,19 +19,29 @@
             }
         }
 
-        //public void AddFirst(string value)
-        //{
-        //    var node = new TerjesLinkedListNode(value);
-        //    if (_head == null)
-        //    {
-        //        _head = node;
-        //        _tail = node;
-        //    }
-        //    else
-        //    {
-        //        node.Next = _head;
-        //        _head = node;
-        //    }
-        //}
+        public void AddFirst(string value)
+        {
+            var node = new TerjesLinkedListNode(value);
+            if (_head == null)
+            {
+                _head = node;
+                _tail = node;
+            }
+            else
+            {
+                node.Next = _head;
+                _head = node;
+            }
+        }
+
+        public void ShowAll()
+        {
+            var node = _head;
+            while (node != null)
+            {
+                Console.WriteLine(node.Value);
+                node = node.Next;
+            }
+        }
     }
 }

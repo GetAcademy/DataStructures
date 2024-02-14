@@ -9,24 +9,23 @@
             root = Add(root, key, value);
         }
 
-        public TerjesBinaryTreeNode Add(TerjesBinaryTreeNode root, string key, int value)
+        public TerjesBinaryTreeNode Add(TerjesBinaryTreeNode node, string key, int value)
         {
-            if (root == null)
+            if (node == null)
             {
-                root = new TerjesBinaryTreeNode(key, value);
-                return root;
+                return new TerjesBinaryTreeNode(key, value);
             }
 
-            int comparison = string.CompareOrdinal(key, root.Key);
+            int comparison = string.CompareOrdinal(key, node.Key);
 
             if (comparison < 0)
-                root.Left = Add(root.Left, key, value);
+                node.Left = Add(node.Left, key, value);
             else if (comparison > 0)
-                root.Right = Add(root.Right, key, value);
+                node.Right = Add(node.Right, key, value);
             else
                 throw new ApplicationException("Duplicate keys not allowed");
 
-            return root;
+            return node;
         }
 
         public TerjesBinaryTreeNode Find(string key, TerjesBinaryTreeNode node = null)
